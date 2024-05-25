@@ -6,13 +6,6 @@ class AsyncStore {
     this.context = {};
   }
 
-  static getInstance() {
-    if (!ContextStore.instance) {
-      ContextStore.instance = new ContextStore();
-    }
-    return ContextStore.instance;
-  }
-
   getCurrentContext() {
     return this.asyncLocalStorage.getStore() || this.context;
   }
@@ -29,4 +22,5 @@ class AsyncStore {
   }
 }
 
-module.exports = AsyncStore;
+// single async store
+module.exports = new AsyncStore();
