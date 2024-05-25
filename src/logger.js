@@ -1,9 +1,19 @@
 const pino = require("pino");
+const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
+const { NodeSDK } = require("@opentelemetry/sdk-node");
+const {
+  getNodeAutoInstrumentations,
+} = require("@opentelemetry/auto-instrumentations-node");
 
 let logger = null;
 
 function initializeLogger(options) {
   if (!logger) {
+    const provider = new NodeTracerProvider();
+    new NodeSDK({
+      instrumentations: [getNodeAutoInstrumentations()],
+    });
+    provider.register();
     logger = pino(options);
   }
 }

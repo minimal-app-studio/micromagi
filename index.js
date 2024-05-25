@@ -6,6 +6,7 @@ const {
   globalErrorHandler,
 } = require("./src/errors");
 const AsyncStore = require("./src/asyncStore");
+const { initializeLogger, logger } = require("./src/logger");
 
 module.exports = {
   sendSuccess,
@@ -16,4 +17,6 @@ module.exports = {
   globalErrorHandler,
   injectUtilities,
   AsyncStore,
+  initializeLogger,
+  logger,
 };
