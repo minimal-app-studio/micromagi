@@ -2,8 +2,8 @@ const sendSuccess = (res, message, data) => {
   res.status(200).json({ message, data });
 };
 
-const sendError = (res, message, error, statusCode = 500) => {
-  res.status(statusCode).json({ message, error });
+const sendError = (res, message, statusCode = 500) => {
+  res.status(statusCode).json({ message });
 };
 
 const injectUtilities = (req, res, next) => {

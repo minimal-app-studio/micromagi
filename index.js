@@ -5,6 +5,7 @@ const {
   ValidationError,
   globalErrorHandler,
 } = require("./src/errors");
+const AsyncStore = require("./src/asyncStore");
 
 module.exports = {
   sendSuccess,
@@ -14,4 +15,5 @@ module.exports = {
   ValidationError,
   globalErrorHandler,
   injectUtilities,
+  AsyncStore,
 };
