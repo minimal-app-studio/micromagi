@@ -1,6 +1,6 @@
 {
   "name": "micromagi",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "MicroMagi provides a comprehensive suite of Node.js utilities tailored for backend microservices. Designed to enhance efficiency and scalability, MicroMagi simplifies common tasks such as data handling,error management, logging and more",
   "main": "index.js",
   "scripts": {
@@ -9,11 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@opentelemetry/api": "^1.8.0",
     "@opentelemetry/auto-instrumentations-node": "^0.46.1",
     "@opentelemetry/instrumentation": "^0.51.1",
     "@opentelemetry/instrumentation-http": "^0.51.1",
-    "@opentelemetry/sdk-metrics": "^1.24.1",
     "@opentelemetry/sdk-node": "^0.51.1",
     "@opentelemetry/sdk-trace-node": "^1.24.1",
     "pino": "^9.1.0",
