@@ -3,18 +3,51 @@ const { NodeSDK } = require("@opentelemetry/sdk-node");
 const {
   getNodeAutoInstrumentations,
 } = require("@opentelemetry/auto-instrumentations-node");
-const provider = new NodeTracerProvider();
+
+const { HttpInstrumentation } = require("@opentelemetry/instrumentation-http");
+
+const tracerProvider = new NodeTracerProvider();
+
 new NodeSDK({
-  instrumentations: [getNodeAutoInstrumentations()],
+  instrumentations: [
+    getNodeAutoInstrumentations(),
+    new HttpInstrumentation({
+      responseHook: (span, response) => {
+        response.setHeader("x-trace-id", span._spanContext.traceId);
+      },
+    }),
+  ],
 });
-provider.register();
+
+tracerProvider.register();
 
 const pino = require("pino");
+const pinoCaller = require("pino-caller");
+
 let logger = null;
 
-function initializeLogger(options) {
+function initializeLogger(loggerOptions) {
   if (!logger) {
-    logger = pino(options);
+    const { prettyPrint, context, ...rest } = loggerOptions;
+    if (prettyPrint) {
+      rest["transport"] = {
+        target: "pino-pretty",
+        options: {
+          colorize: true,
+        },
+      };
+    }
+
+    // it will print also the calling site
+    baseLogger = pino({
+      ...rest,
+      mixin() {
+        return context;
+      },
+    });
+
+    // it will print also the calling site
+    logger = pinoCaller(baseLogger);
   }
 }
 
@@ -39,4 +72,5 @@ const loggerProxy = new Proxy(
 module.exports = {
   initializeLogger,
   logger: loggerProxy,
+  tracerProvider,
 };
