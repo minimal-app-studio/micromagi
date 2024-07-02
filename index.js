@@ -7,6 +7,7 @@ const {
 } = require("./src/errors");
 const AsyncStore = require("./src/asyncStore");
 const { initializeLogger, logger } = require("./src/logger");
+const DB = require("./src/db");
 
 module.exports = {
   sendSuccess,
@@ -19,4 +20,5 @@ module.exports = {
   AsyncStore,
   initializeLogger,
   logger,
+  DB,
 };
