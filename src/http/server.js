@@ -1,4 +1,4 @@
-const respond = (res, statusCode, data, message = "Success", headers = {}) => {
+const respond = (res, statusCode, body, message = "Success", headers = {}) => {
   res.status(statusCode).set(headers);
 
   if (typeof data === "string") {
@@ -7,7 +7,8 @@ const respond = (res, statusCode, data, message = "Success", headers = {}) => {
     res.json({
       status: "success",
       message,
-      data,
+      data: body.data,
+      metadata: body.metadata || {},
     });
   }
 };
