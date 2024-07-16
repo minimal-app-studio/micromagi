@@ -1,4 +1,4 @@
-const { sendError } = require("./http");
+const { sendError } = require("./http/server");
 
 class AppError extends Error {
   constructor(message, statusCode, errorCode) {

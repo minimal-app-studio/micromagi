@@ -1,4 +1,4 @@
-const http = require("./src/http");
+const server = require("./src/http/server");
 const {
   AppError,
   NotFoundError,
@@ -10,7 +10,7 @@ const { initializeLogger, logger } = require("./src/logger");
 const DB = require("./src/db");
 
 module.exports = {
-  http,
+  server,
   AppError,
   NotFoundError,
   ValidationError,
