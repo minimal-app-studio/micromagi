@@ -1,6 +1,6 @@
 {
   "name": "micromagi",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "MicroMagi provides a comprehensive suite of Node.js utilities tailored for backend microservices. Designed to enhance efficiency and scalability, MicroMagi simplifies common tasks such as data handling,error management, logging and more",
   "main": "index.js",
   "scripts": {

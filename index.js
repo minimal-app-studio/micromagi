@@ -1,4 +1,4 @@
-const { sendSuccess, sendError, injectUtilities } = require("./src/http");
+const http = require("./src/http");
 const {
   AppError,
   NotFoundError,
@@ -10,13 +10,11 @@ const { initializeLogger, logger } = require("./src/logger");
 const DB = require("./src/db");
 
 module.exports = {
-  sendSuccess,
-  sendError,
+  http,
   AppError,
   NotFoundError,
   ValidationError,
   globalErrorHandler,
-  injectUtilities,
   AsyncStore,
   initializeLogger,
   logger,
