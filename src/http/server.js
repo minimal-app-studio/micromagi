@@ -7,7 +7,7 @@ const respond = (res, statusCode, body, message = "Success", headers = {}) => {
     res.json({
       status: "success",
       message,
-      data: body,
+      data: body.data,
       metadata: body.metadata || {},
     });
   }
@@ -16,18 +16,13 @@ const respond = (res, statusCode, body, message = "Success", headers = {}) => {
 const handleError = (
   res,
   statusCode,
-  error,
   message = "Error occurred",
   headers = {}
 ) => {
-  res
-    .status(statusCode)
-    .set(headers)
-    .json({
-      status: "error",
-      message,
-      error: error.message || error,
-    });
+  res.status(statusCode).set(headers).json({
+    status: "error",
+    message,
+  });
 };
 
 module.exports = {
