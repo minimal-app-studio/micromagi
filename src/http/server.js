@@ -7,7 +7,7 @@ const respond = (res, statusCode, body, message = "Success", headers = {}) => {
     res.json({
       status: "success",
       message,
-      data: body.data,
+      data: body,
       metadata: body.metadata || {},
     });
   }
