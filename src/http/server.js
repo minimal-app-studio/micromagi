@@ -1,6 +1,11 @@
-const respond = (res, statusCode, body, message = "Success", headers = {}) => {
+const respond = (
+  res,
+  statusCode = 200,
+  message = "success",
+  body = {},
+  headers = {}
+) => {
   res.status(statusCode).set(headers);
-
   if (typeof data === "string") {
     res.send(data);
   } else {
@@ -15,8 +20,8 @@ const respond = (res, statusCode, body, message = "Success", headers = {}) => {
 
 const handleError = (
   res,
-  statusCode,
-  message = "Error occurred",
+  statusCode = 400,
+  message = "something went wrong",
   headers = {}
 ) => {
   res.status(statusCode).set(headers).json({
