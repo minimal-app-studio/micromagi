@@ -12,7 +12,7 @@ const respond = (
     res.json({
       status: "success",
       message,
-      data: body.data,
+      data: body.data || {},
       metadata: body.metadata || {},
     });
   }
